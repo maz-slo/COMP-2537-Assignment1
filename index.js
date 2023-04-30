@@ -40,12 +40,6 @@ app.use(session({
 }
 ));
 
-app.use(session({
-    secret: node_session_secret,
-    saveUninitialized: false,
-    resave: true,
-}));
-
 app.get('/', (req, res) => {
     var html = `
     <a href='/createUser'>Sign Up</a>
@@ -128,6 +122,10 @@ app.get('/createUser', (req, res) => {
     <button>Submit</button>
     </form>
     `;
+    if (req.query.missing) {
+        html += `<div>Please provide a ${req.query.missing}.</div>`;
+    }
+    html += `<br><a href="/createUser">Try again</a>`;
     res.send(html);
 });
 
@@ -176,6 +174,19 @@ app.post('/members', async (req, res) => {
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
+
+    if (!username) {
+        res.redirect('/createUser?missing=username');
+        return;
+    }
+    if (!email) {
+        res.redirect('/createUser?missing=email');
+        return;
+    }
+    if (!password) {
+        res.redirect('/createUser?missing=password');
+        return;
+    }
 
     const schema = Joi.object({
         username: Joi.string().alphanum().max(20).required(),
