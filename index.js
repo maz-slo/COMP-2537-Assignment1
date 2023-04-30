@@ -125,7 +125,6 @@ app.get('/createUser', (req, res) => {
     if (req.query.missing) {
         html += `<div>Please provide a ${req.query.missing}.</div>`;
     }
-    html += `<br><a href="/createUser">Try again</a>`;
     res.send(html);
 });
 
@@ -152,7 +151,7 @@ app.get('/login', (req, res) => {
 
 app.get('/members', (req, res) => {
     if (!req.session.authenticated) {
-        res.redirect('/login');
+        res.redirect('/');
         return;
     }
 
