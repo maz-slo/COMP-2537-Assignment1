@@ -1,0 +1,21 @@
+{
+  "name": "comp-2537-assignment1",
+  "version": "1.0.0",
+  "description": "v1.9 - Keeping secrets, secret with dotenv ========================================== It's time we separate our passwords and secret keys from our code. A password or secret_key should not be stored in a git repo.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "connect-mongo": "^5.0.0",
+    "dotenv": "^16.0.3",
+    "env": "^0.0.2",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "joi": "^17.9.2",
+    "nodemon": "^2.0.22"
+  }
+}
