@@ -26,7 +26,7 @@ const userCollection = database.db(mongodb_database).collection("ClusterA1");
 app.use(express.urlencoded({ extended: false }));
 
 var mongoStore = MongoStore.create({
-    mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@clustera1.k9hrnmi.mongodb.net/Cluster1`,
+    mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/Cluster1`,
     crypto: {
         secret: mongodb_session_secret
     }
